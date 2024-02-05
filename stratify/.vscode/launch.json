@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Average Compute",
+            "type": "python",
+            "request": "launch",
+            "program": "/Users/psulin/projects/insights/python/insights/framework/sqltodf.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["/Users/psulin/projects/insights/configs/histogram_config.conf"]
+        }
+    ]
+}

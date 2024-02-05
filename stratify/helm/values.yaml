@@ -1,0 +1,70 @@
+# BEGIN SDS
+management:
+  enabled: true
+  hostname: "localhost"
+  port: "8000"
+
+app:
+  namespace: "sds-services"
+  name: "insights"
+
+compute:
+  database:
+    nodeTypeSelector: ""
+    cpu: 2
+    memory: 2Gi
+# END SDS
+
+replicaCount: 1
+
+image:
+  registry: containers.intersystems.com/iscinternal/sds-service
+  repository: insights
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  #tag: "latest"
+
+# These are the secret fields needed to successfully deploy.
+# They will be injected by the control plane:
+requiredSecrets:
+  intersystemsContainerRegistrySecret: ""
+
+imagePullSecrets: [{ name: intersystems-container-registry-secret }]
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: LoadBalancer
+  port: 8000
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+# Required for reference in deployments.yaml
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}

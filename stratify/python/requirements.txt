@@ -1,0 +1,13 @@
+fastapi[all]==0.95.1
+JayDeBeApi==1.2.3
+numpy==1.24.2
+pandas>=2.0
+pyhocon==0.3.60
+pyodbc==4.0.34
+ray==2.7
+requests==2.31.0
+SQLAlchemy>=2.0
+sqlalchemy-iris==0.10.5
+python-dotenv==1.0.0
+loguru==0.7.2
+uvicorn==0.23.2

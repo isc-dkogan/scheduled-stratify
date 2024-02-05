@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.app.name}}
+  namespace: {{.Release.Name}}
+  labels:
+    app: {{.Values.app.name}}
+    
+    
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: {{.Values.app.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.app.name}}
+    spec:
+      # imagePullSecrets:
+      #   - name: intersystems-container-registry-secret
+      imagePullSecrets:
+          {{- if .Values.requiredSecrets.intersystemsContainerRegistrySecret }}    
+          - name: {{ .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
+          {{- else }}
+          - name: intersystems-container-registry-secret
+          {{- end }}
+      containers:
+        - name: {{.Values.app.name}}
+          # image: containers.intersystems.com/iscinternal/sds-service/sds-stratification:0.1
+          image: {{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Chart.AppVersion  }}
+          imagePullPolicy: {{.Values.image.pullPolicy}}
+          resources:
+            requests:
+              cpu: {{ .Values.compute.database.cpu }}
+              memory: {{ .Values.compute.database.memory }}
+          ports:
+            - name: http
+              containerPort: 8000
+      {{- if .Values.compute.database.nodeTypeSelector }}
+      nodeSelector:
+        sds/node-type: {{ .Values.compute.database.nodeTypeSelector }}
+      {{- end }}
+      # resources:
+      #   requests:
+      #     cpu: {{ .Values.compute.database.cpu }}
+      #     memory: {{ .Values.compute.database.memory }}
+      tolerations:
+      - key: sds/select-worker
+        value: select-worker
+        effect: NoSchedule

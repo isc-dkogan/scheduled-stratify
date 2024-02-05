@@ -1,0 +1,41 @@
+apiVersion: v1
+
+secrets:
+- field: requiredSecrets.intersystemsContainerRegistrySecret
+  type: image-pull-secret
+  subType: containers.intersystems.com
+  reason: These are the credentials to authenticate with containers.intersystems.com
+
+endpoints:
+- title: SQL
+  group: Developer
+  description: Open the SQL tab in the management portal
+  type: browsing
+  url: http://{externalService.host}:{externalService.port}/docs#/default/root__get
+  contexts: 
+  - manage
+  visibility: external
+  presentation: link
+  externalService: management
+
+externalServicesDeclarations:
+ - name: management
+   type: loadBalancer
+   hostnameChartField: management.hostname
+   loadBalancerPortChartField: management.port
+   enabled: false
+   enabledChartField: management.enabled
+   label: Management Portal over Load Balancer
+   description: Port to access the management portal over a Load Balancer
+
+compute:
+  computeSpecs:
+  - name: database
+    label: Database Node Specification
+    categoryFilter: CO,MO,GP
+    minCPU: 2
+    minRAM: 4
+    nodeSelectorField: compute.database.nodeTypeSelector
+    cpuRequestField: compute.database.cpu
+    memoryRequestField: compute.database.memory
+    help: Specifies how many cores and how much memory your database server nodes will have 

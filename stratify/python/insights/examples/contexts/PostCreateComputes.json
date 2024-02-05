@@ -1,0 +1,1389 @@
+{
+    "config": {
+        "run_type": "test",
+        "servers": [
+            {
+                "name": "test",
+                "database": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                "dialect": "sqlite",
+                "driver": null,
+                "host": "",
+                "password": null,
+                "user": null,
+                "port": null,
+                "schemas": []
+            },
+            {
+                "name": "local",
+                "database": "User",
+                "dialect": "iris",
+                "driver": "com.intersystems.jdbc.IRISDriver",
+                "host": "localhost",
+                "password": "sys",
+                "user": "_system",
+                "port": "1972",
+                "schemas": [
+                    "SQLUser",
+                    "MyPackage"
+                ]
+            }
+        ],
+        "datatype_mapping": [
+            {
+                "subtypes": [
+                    "BIGINT",
+                    "INTEGER",
+                    "FLOAT",
+                    "DOUBLE",
+                    "TINYINT"
+                ],
+                "name": "numeric",
+                "agg_funcs": [
+                    "min($1)",
+                    "max($1)"
+                ]
+            },
+            {
+                "subtypes": [
+                    "VARCHAR",
+                    "TEXT"
+                ],
+                "name": "varchar",
+                "agg_funcs": [
+                    "COUNT(DISTINCT($1))"
+                ]
+            }
+        ],
+        "default_partition_key": "ID",
+        "computations": [
+            {
+                "name": "histogram",
+                "value": "$1",
+                "bin_count": 10,
+                "top_count": null,
+                "max_unique": null,
+                "columns": []
+            },
+            {
+                "name": "topdistinct",
+                "value": "$1",
+                "bin_count": null,
+                "top_count": 10,
+                "max_unique": 100,
+                "columns": []
+            }
+        ],
+        "computation_type_mapping": [
+            {
+                "name": "INTEGER",
+                "computations": [
+                    "histogram"
+                ]
+            },
+            {
+                "name": "DOUBLE",
+                "computations": [
+                    "histogram"
+                ]
+            },
+            {
+                "name": "BIGINT",
+                "computations": [
+                    "histogram"
+                ]
+            },
+            {
+                "name": "NUMERIC",
+                "computations": [
+                    "histogram"
+                ]
+            },
+            {
+                "name": "VARCHAR",
+                "computations": [
+                    "topdistinct"
+                ]
+            }
+        ],
+        "src_server": "test",
+        "conn_type": "sqlite",
+        "only_inclusion_tables": true,
+        "sample_rate": 0,
+        "max_records_per_table": 0,
+        "spark_jars": "/home/bin/intersystems-jdbc-3.3.0.jar",
+        "table_inclusions": [],
+        "parallization": 4,
+        "partition_key": "ID",
+        "partition_key_agg_funcs": [
+            "min($1)",
+            "max($1)"
+        ],
+        "aggregate_type_mapping": []
+    },
+    "job_id": -9,
+    "runtime_params": {},
+    "metadata": {
+        "list_name": "instances",
+        "timestamp": 1698844231.6137412,
+        "instances": [
+            {
+                "list_name": "databases",
+                "name": "test",
+                "host": "",
+                "databases": [
+                    {
+                        "list_name": "schemas",
+                        "name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                        "schemas": [
+                            {
+                                "list_name": "tables",
+                                "name": "default",
+                                "tables": [
+                                    {
+                                        "list_name": "columns",
+                                        "name": "Position",
+                                        "field_count": 16,
+                                        "full_name": "Position",
+                                        "row_count": 1000,
+                                        "schema_name": "",
+                                        "columns": [
+                                            {
+                                                "name": "ID",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "BIGINT",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": false,
+                                                "primary_key": true,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "agg_funcs": [
+                                                    "min($1)",
+                                                    "max($1)"
+                                                ],
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ],
+                                                "aggregations": {
+                                                    "min": 1,
+                                                    "max": 4244069
+                                                }
+                                            },
+                                            {
+                                                "name": "AsOfDate",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DATE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "EndOfDayPrice",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "MarketValue",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "PositionCurrency",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "PreviousEndOfDayPrice",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Quantity",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "SecurityID",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "StartOfDayPosition",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "StartOfDayPrice",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "TradeSettleAmount",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "TradingBook",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "createTimeStamp",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "TIMESTAMP",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "createUser",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "updateTimeStamp",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "TIMESTAMP",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "updateUser",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "Position",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "computations": [
+                                            {
+                                                "name": "histogram",
+                                                "value": "$1",
+                                                "bin_count": 10,
+                                                "top_count": null,
+                                                "max_unique": null,
+                                                "columns": [
+                                                    "ID",
+                                                    "EndOfDayPrice",
+                                                    "MarketValue",
+                                                    "PreviousEndOfDayPrice",
+                                                    "Quantity",
+                                                    "StartOfDayPosition",
+                                                    "StartOfDayPrice",
+                                                    "TradeSettleAmount"
+                                                ]
+                                            },
+                                            {
+                                                "name": "topdistinct",
+                                                "value": "$1",
+                                                "bin_count": null,
+                                                "top_count": 10,
+                                                "max_unique": 100,
+                                                "columns": [
+                                                    "PositionCurrency",
+                                                    "SecurityID",
+                                                    "TradingBook",
+                                                    "createUser",
+                                                    "updateUser"
+                                                ]
+                                            }
+                                        ],
+                                        "agg_sql": "SELECT min(ID)  min_ID,max(ID)  max_ID FROM Position"
+                                    },
+                                    {
+                                        "list_name": "columns",
+                                        "name": "SecurityMaster",
+                                        "field_count": 29,
+                                        "full_name": "SecurityMaster",
+                                        "row_count": 1000,
+                                        "schema_name": "",
+                                        "columns": [
+                                            {
+                                                "name": "ID",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "BIGINT",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": false,
+                                                "primary_key": true,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "agg_funcs": [
+                                                    "min($1)",
+                                                    "max($1)"
+                                                ],
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Coupon",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "DOUBLE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "CouponFrequency",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "INTEGER",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "CouponType",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Currency",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(3)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Cusip",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "DatedDate",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "DATE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "DayCount",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Description",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "FirstCouponDate",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "DATE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "FitchRating",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "IsinCode",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "IssueDate",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "DATE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "Issuer",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "MaturityDate",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "DATE",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "MoodysRating",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "OriginalTerm",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "INTEGER",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "ProductSubType",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "ProductType",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Sector",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "SecurityId",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "SecurityType",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "SettlementDays",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "INTEGER",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "histogram",
+                                                        "value": "$1",
+                                                        "bin_count": 10,
+                                                        "top_count": null,
+                                                        "max_unique": null,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "SnPRating",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "SubSector",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "createTimeStamp",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "TIMESTAMP",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "createUser",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "updateTimeStamp",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "TIMESTAMP",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null
+                                            },
+                                            {
+                                                "name": "updateUser",
+                                                "instance_name": "test",
+                                                "timestamp": null,
+                                                "database_name": "/Users/psulin/projects/insights/python/insights/tests/data/test.db",
+                                                "schema_name": "default",
+                                                "table_name": "SecurityMaster",
+                                                "data_type": "VARCHAR(50)",
+                                                "character_maximum_length": null,
+                                                "unique_column": null,
+                                                "is_nullable": true,
+                                                "primary_key": false,
+                                                "is_identity": null,
+                                                "index_name": null,
+                                                "ordinal_position": null,
+                                                "non_unique": null,
+                                                "computations": [
+                                                    {
+                                                        "name": "topdistinct",
+                                                        "value": "$1",
+                                                        "bin_count": null,
+                                                        "top_count": 10,
+                                                        "max_unique": 100,
+                                                        "columns": []
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "computations": [
+                                            {
+                                                "name": "histogram",
+                                                "value": "$1",
+                                                "bin_count": 10,
+                                                "top_count": null,
+                                                "max_unique": null,
+                                                "columns": [
+                                                    "ID",
+                                                    "Coupon",
+                                                    "CouponFrequency",
+                                                    "OriginalTerm",
+                                                    "SettlementDays"
+                                                ]
+                                            },
+                                            {
+                                                "name": "topdistinct",
+                                                "value": "$1",
+                                                "bin_count": null,
+                                                "top_count": 10,
+                                                "max_unique": 100,
+                                                "columns": [
+                                                    "CouponType",
+                                                    "Currency",
+                                                    "Cusip",
+                                                    "DayCount",
+                                                    "Description",
+                                                    "FitchRating",
+                                                    "IsinCode",
+                                                    "Issuer",
+                                                    "MoodysRating",
+                                                    "ProductSubType",
+                                                    "ProductType",
+                                                    "Sector",
+                                                    "SecurityId",
+                                                    "SecurityType",
+                                                    "SnPRating",
+                                                    "SubSector",
+                                                    "createUser",
+                                                    "updateUser"
+                                                ]
+                                            }
+                                        ],
+                                        "agg_sql": "SELECT min(ID)  min_ID,max(ID)  max_ID FROM SecurityMaster"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "row_counts": {
+        "Position": 1000,
+        "SecurityMaster": 1000
+    }
+}

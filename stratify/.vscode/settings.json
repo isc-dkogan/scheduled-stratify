@@ -1,0 +1,10 @@
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json": "untitled:Untitled-1"
+    },
+    "python.testing.pytestArgs": [
+        "python"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
