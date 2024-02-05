@@ -1,0 +1,20 @@
+[32m2024-01-30 12:19:23 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 28f63889-325d-4d27-ab46-ab2d3fb9f5f6 - 73223 - LOGS_CAPTURED - Started capturing logs in process (pid: 73223).
+[32m2024-01-30 12:19:23 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 28f63889-325d-4d27-ab46-ab2d3fb9f5f6 - 73223 - config_validation - STEP_START - Started execution of step "config_validation".
+[32m2024-01-30 12:19:23 -0500[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 28f63889-325d-4d27-ab46-ab2d3fb9f5f6 - 73223 - config_validation - STEP_FAILURE - Execution of step "config_validation" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "config_validation"::
+
+NameError: name 'config_str' is not defined
+
+Stack Trace:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 467, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 125, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+  File "/Users/dkogan/dagster-stratify/dagster_stratify/assets.py", line 23, in config_validation
+    response = requests.post(api_url, data=config_str, headers=headers)
+[0m

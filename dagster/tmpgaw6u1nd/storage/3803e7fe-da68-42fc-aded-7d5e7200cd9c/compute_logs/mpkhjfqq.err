@@ -1,0 +1,20 @@
+[32m2024-01-30 11:14:23 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 3803e7fe-da68-42fc-aded-7d5e7200cd9c - 71405 - LOGS_CAPTURED - Started capturing logs in process (pid: 71405).
+[32m2024-01-30 11:14:23 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 3803e7fe-da68-42fc-aded-7d5e7200cd9c - 71405 - config_validation - STEP_START - Started execution of step "config_validation".
+[32m2024-01-30 11:14:23 -0500[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 3803e7fe-da68-42fc-aded-7d5e7200cd9c - 71405 - config_validation - STEP_FAILURE - Execution of step "config_validation" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "config_validation"::
+
+TypeError: issubclass() arg 1 must be a class
+
+Stack Trace:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 467, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 116, in invoke_compute_fn
+    if issubclass(config_arg_cls, Config):
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/abc.py", line 123, in __subclasscheck__
+    return _abc_subclasscheck(cls, subclass)
+[0m

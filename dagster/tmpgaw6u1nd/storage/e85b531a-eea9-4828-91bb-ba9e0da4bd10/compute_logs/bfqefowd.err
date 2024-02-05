@@ -1,0 +1,35 @@
+[32m2024-01-29 11:02:59 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e85b531a-eea9-4828-91bb-ba9e0da4bd10 - 40256 - LOGS_CAPTURED - Started capturing logs in process (pid: 40256).
+[32m2024-01-29 11:02:59 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e85b531a-eea9-4828-91bb-ba9e0da4bd10 - 40256 - config_validate - STEP_START - Started execution of step "config_validate".
+[32m2024-01-29 11:02:59 -0500[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - e85b531a-eea9-4828-91bb-ba9e0da4bd10 - 40256 - config_validate - STEP_FAILURE - Execution of step "config_validate" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "config_validate"::
+
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+Stack Trace:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 467, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 125, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+  File "/Users/dkogan/dagster-stratify/dagster_stratify/assets.py", line 10, in config_validate
+    config = json.load(f)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+
+The above exception occurred during handling of the following exception:
+StopIteration: 0
+
+Stack Trace:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+[0m

@@ -1,0 +1,34 @@
+[32m2024-01-30 16:43:45 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - ffdadb39-05c5-40a6-ad14-1cb160c521b1 - 86559 - LOGS_CAPTURED - Started capturing logs in process (pid: 86559).
+[32m2024-01-30 16:43:45 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - ffdadb39-05c5-40a6-ad14-1cb160c521b1 - 86559 - config_validation - STEP_START - Started execution of step "config_validation".
+[32m2024-01-30 16:44:00 -0500[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - ffdadb39-05c5-40a6-ad14-1cb160c521b1 - 86559 - config_validation - STEP_FAILURE - Execution of step "config_validation" failed.
+
+dagster._core.errors.DagsterExecutionInterruptedError
+
+Stack Trace:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_plan.py", line 286, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 487, in core_dagster_event_sequence_for_step
+    for user_event in _step_output_error_checked_user_event_sequence(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 169, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 95, in _process_asset_results_to_events
+    for user_event in user_event_sequence:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute.py", line 212, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn, compute_context):
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute.py", line 181, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 467, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 125, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+  File "/Users/dkogan/dagster-stratify/dagster_stratify/assets.py", line 19, in config_validation
+    stat = process.poll()
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/subprocess.py", line 1176, in poll
+    return self._internal_poll()
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/subprocess.py", line 1875, in _internal_poll
+    pid, sts = _waitpid(self.pid, _WNOHANG)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_utils/interrupts.py", line 82, in _new_signal_handler
+    raise error_cls()
+[0m

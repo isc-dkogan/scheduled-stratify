@@ -1,0 +1,7 @@
+[32m2024-01-31 15:32:23 -0500[0m - dagster - [34mDEBUG[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - 16477 - LOGS_CAPTURED - Started capturing logs in process (pid: 16477).
+[32m2024-01-31 15:32:23 -0500[0m - dagster - [34mDEBUG[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - 16477 - computations_op - STEP_START - Started execution of step "computations_op".
+[32m2024-01-31 15:32:24 -0500[0m - dagster - [34mINFO[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - computations_op - Job 21 is running
+[32m2024-01-31 15:32:24 -0500[0m - dagster - [34mDEBUG[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - 16477 - computations_op - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2024-01-31 15:32:24 -0500[0m - dagster - [34mDEBUG[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - computations_op - Writing file at: /Users/dkogan/dagster-stratify/tmpgaw6u1nd/storage/a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c/computations_op/result using PickledObjectFilesystemIOManager...
+[32m2024-01-31 15:32:24 -0500[0m - dagster - [34mDEBUG[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - 16477 - computations_op - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2024-01-31 15:32:24 -0500[0m - dagster - [34mDEBUG[0m - computations_job - a955fdb7-ca7c-43f6-927f-d8ca5d3d6e7c - 16477 - computations_op - STEP_SUCCESS - Finished execution of step "computations_op" in 353ms.

@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+dagster_stratify/__init__.py
+dagster_stratify/assets.py
+dagster_stratify.egg-info/PKG-INFO
+dagster_stratify.egg-info/SOURCES.txt
+dagster_stratify.egg-info/dependency_links.txt
+dagster_stratify.egg-info/requires.txt
+dagster_stratify.egg-info/top_level.txt

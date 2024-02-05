@@ -1,0 +1,32 @@
+[32m2024-01-29 11:14:51 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - cab11295-9ef7-42a1-bfae-bd8793684c3d - 40880 - LOGS_CAPTURED - Started capturing logs in process (pid: 40880).
+[32m2024-01-29 11:14:51 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - cab11295-9ef7-42a1-bfae-bd8793684c3d - 40880 - config_validate - STEP_START - Started execution of step "config_validate".
+[32m2024-01-29 11:14:51 -0500[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - cab11295-9ef7-42a1-bfae-bd8793684c3d - 40880 - config_validate - STEP_FAILURE - Execution of step "config_validate" failed.
+
+dagster._core.errors.DagsterInvalidInvocationError: Decorated function 'hello_logs' has context argument, but no context was provided when invoking.
+
+Stack Trace:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_plan.py", line 286, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 487, in core_dagster_event_sequence_for_step
+    for user_event in _step_output_error_checked_user_event_sequence(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 169, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 95, in _process_asset_results_to_events
+    for user_event in user_event_sequence:
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute.py", line 212, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn, compute_context):
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute.py", line 181, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 467, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 125, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+  File "/Users/dkogan/dagster-stratify/dagster_stratify/assets.py", line 7, in config_validate
+    hello_logs()
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/definitions/op_definition.py", line 456, in __call__
+    return direct_invocation_result(self, *args, **kwargs)
+  File "/Users/dkogan/.pyenv/versions/3.10.0/lib/python3.10/site-packages/dagster/_core/definitions/op_invocation.py", line 147, in direct_invocation_result
+    raise DagsterInvalidInvocationError(
+[0m

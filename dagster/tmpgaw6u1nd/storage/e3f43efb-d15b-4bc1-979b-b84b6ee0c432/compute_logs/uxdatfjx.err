@@ -1,0 +1,8 @@
+[32m2024-01-30 12:55:52 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - 76484 - LOGS_CAPTURED - Started capturing logs in process (pid: 76484).
+[32m2024-01-30 12:55:52 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - 76484 - computations - STEP_START - Started execution of step "computations".
+[32m2024-01-30 12:55:53 -0500[0m - dagster - [34mINFO[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - computations - Job 20 is running
+[32m2024-01-30 12:55:53 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - 76484 - computations - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2024-01-30 12:55:53 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - computations - Writing file at: /Users/dkogan/dagster-stratify/tmpgaw6u1nd/storage/computations using PickledObjectFilesystemIOManager...
+[32m2024-01-30 12:55:53 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - 76484 - computations - ASSET_MATERIALIZATION - Materialized value computations.
+[32m2024-01-30 12:55:53 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - 76484 - computations - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2024-01-30 12:55:53 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e3f43efb-d15b-4bc1-979b-b84b6ee0c432 - 76484 - computations - STEP_SUCCESS - Finished execution of step "computations" in 1.09s.

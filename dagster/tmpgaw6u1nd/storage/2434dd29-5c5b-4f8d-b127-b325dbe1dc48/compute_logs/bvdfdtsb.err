@@ -1,0 +1,7 @@
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - 48336 - LOGS_CAPTURED - Started capturing logs in process (pid: 48336).
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - 48336 - config_validate - STEP_START - Started execution of step "config_validate".
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - 48336 - config_validate - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - config_validate - Writing file at: /Users/dkogan/dagster-stratify/tmpgaw6u1nd/storage/config_validate using PickledObjectFilesystemIOManager...
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - 48336 - config_validate - ASSET_MATERIALIZATION - Materialized value config_validate.
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - 48336 - config_validate - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2024-01-29 13:38:04 -0500[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2434dd29-5c5b-4f8d-b127-b325dbe1dc48 - 48336 - config_validate - STEP_SUCCESS - Finished execution of step "config_validate" in 167ms.
