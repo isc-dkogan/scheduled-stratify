@@ -27,7 +27,7 @@ endpoints:
   presentation: apiEndpoint
   type: intersystems-iris-jdbc
   clusterIPService: stratify
-  url: jdbc:IRIS://{clusterIPService.host}:8000
+  # url: jdbc:IRIS://{clusterIPService.host}:8000
 
 externalServicesDeclarations:
  - name: management

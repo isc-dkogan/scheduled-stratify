@@ -11,7 +11,11 @@ ui:
 
 app:
   namespace: "sds-services"
-  name: "stratify"
+  name: "insights"
+
+scheduler:
+  namespace: "sds-services"
+  name: "dagster-stratify"
 
 compute:
   database:
@@ -24,10 +28,15 @@ replicaCount: 1
 
 image:
   registry: containers.intersystems.com/iscinternal/sds-service
-  repository: scheduled-stratify
+  repository: insights
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   #tag: "latest"
+
+schedulerImage:
+  registry: containers.intersystems.com/iscinternal/sds-service
+  repository: dagster-stratify
+  pullPolicy: Always
 
 # These are the secret fields needed to successfully deploy.
 # They will be injected by the control plane:

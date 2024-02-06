@@ -37,6 +37,11 @@ spec:
           ports:
             - name: http
               containerPort: 8000
+      initContainers:
+        - name: {{.Values.scheduler.name}}
+          image: {{ .Values.schedulerImage.registry }}/{{ .Values.schedulerImage.repository }}:{{ .Chart.AppVersion  }}
+          imagePullPolicy: {{.Values.schedulerImage.pullPolicy}}
+          restartPolicy: Always
       {{- if .Values.compute.database.nodeTypeSelector }}
       nodeSelector:
         sds/node-type: {{ .Values.compute.database.nodeTypeSelector }}

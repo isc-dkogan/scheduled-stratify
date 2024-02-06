@@ -1,3 +1,4 @@
 dagster==1.5.14
 dagster-webserver==1.5.14
 dagster-daemon==1.5.14
+dagster-docker
