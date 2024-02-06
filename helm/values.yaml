@@ -4,9 +4,14 @@ management:
   hostname: "localhost"
   port: "8000"
 
+ui:
+  enabled: true
+  hostname: "localhost"
+  port: "3000"
+
 app:
   namespace: "sds-services"
-  name: "insights"
+  name: "stratify"
 
 compute:
   database:
@@ -19,7 +24,7 @@ replicaCount: 1
 
 image:
   registry: containers.intersystems.com/iscinternal/sds-service
-  repository: insights
+  repository: scheduled-stratify
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   #tag: "latest"
