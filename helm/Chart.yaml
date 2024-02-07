@@ -1,6 +1,6 @@
 apiVersion: v2
-name: stratify
-description: A Helm chart for the stratification service 
+name: stratify-scheduler
+description: A Helm chart for the stratification scheduler service 
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
@@ -16,6 +16,6 @@ appVersion: "0.1.1"
 
 # FOR SDS
 annotations:
-  intersystems/sds-title: SDS Stratification Service
+  intersystems/sds-title: SDS Stratification Scheduler Service
   intersystems/sds-organization: InterSystems Corporation
   intersystems/sds-category: custom

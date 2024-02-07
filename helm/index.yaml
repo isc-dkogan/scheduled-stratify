@@ -4,15 +4,15 @@ entries:
   - annotations:
       intersystems/sds-category: custom
       intersystems/sds-organization: InterSystems Corporation
-      intersystems/sds-title: SDS Stratification Service
+      intersystems/sds-title: SDS Stratification Scheduler Service
     apiVersion: v2
     appVersion: "0.1.1"
     created: "2023-12-12T11:13:44.429664-05:00"
     description: A Helm chart for the stratification service
     digest: de15c713a1dcdea1943da0dc03b25134a4b6b8002c8ae14affe042c833b2adf2
-    name: stratify
+    name: stratify-scheduler
     type: application
     urls:
-    - https://isc-dkogan.github.io/sds-charts/stratify-0.1.1.tgz
-    version: 0.1.32
+    - https://isc-dkogan.github.io/sds-charts/stratify-scheduler-0.1.1.tgz
+    version: 0.1.1
 generated: "2023-12-12T11:13:44.428864-05:00"
