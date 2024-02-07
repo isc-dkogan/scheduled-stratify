@@ -8,6 +8,7 @@ RUN pip install -r /tmp/requirements.txt
 WORKDIR /opt/dagster/app
 
 COPY dagster_stratify/__init__.py /opt/dagster/app
+COPY dagster_stratify/config.conf /opt/dagster/app
 
 # Run dagster gRPC server on port 4000
 

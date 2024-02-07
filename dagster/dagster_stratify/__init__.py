@@ -1,10 +1,11 @@
 from dagster import op, job, schedule, get_dagster_logger, RunRequest, Definitions
+from dagster.utils import file_relative_path
 import json
 import requests
 
 @op
 def get_config_str_from_file_op(filepath: str):
-    f = open(filepath)
+    f = open(file_relative_path(__file__,filepath))
 
     config = json.load(f)
     return json.dumps(config)
@@ -15,7 +16,7 @@ def config_validation_op():
 
     api_url = "http://localhost:8000/config_validate"
 
-    config_str = get_config_str_from_file_op("./config.conf")
+    config_str = get_config_str_from_file_op("config.conf")
     headers =  {"accept":"application/json"}
     response = requests.post(api_url, data=config_str, headers=headers)
 
@@ -30,7 +31,7 @@ def computations_op():
 
     api_url = "http://localhost:8000/run_job/stratify"
 
-    config_str = get_config_str_from_file_op("./config.conf")
+    config_str = get_config_str_from_file_op("config.conf")
     headers =  {"accept":"application/json"}
     response = requests.post(api_url, data=config_str, headers=headers)
 
@@ -45,15 +46,11 @@ def config_validation_job():
 def computations_job():
     computations_op()
 
-@schedule(job=config_validation_job, cron_schedule="15 18 * * 1-5")
-def config_validation_schedule():
-    return RunRequest()
-
-@schedule(job=computations_job, cron_schedule="6 15 * * 1-5")
+@schedule(job=computations_job, cron_schedule="0 23 * * 1-5")
 def computations_schedule():
     return RunRequest()
     
 defs = Definitions(
     jobs=[config_validation_job, computations_job],
-    schedules=[config_validation_schedule, computations_schedule],
+    schedules=[computations_schedule],
 )
