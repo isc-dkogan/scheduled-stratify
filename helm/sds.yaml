@@ -17,17 +17,17 @@ endpoints:
   visibility: external
   presentation: link
   externalService: management
-# - title: Stratify REST Endpoint
-#   contexts:
-#   - manage
-#   icon: bpleditor.png
-#   group: Connectivity
-#   description: Connect using JDBC
-#   visibility: internal
-#   presentation: apiEndpoint
-#   type: intersystems-iris-jdbc
-#   clusterIPService: stratify
-#   url: jdbc:IRIS://{clusterIPService.host}:8000
+- title: Stratify REST Endpoint
+  contexts:
+  - manage
+  icon: bpleditor.png
+  group: Connectivity
+  description: Connect using REST
+  visibility: internal
+  presentation: apiEndpoint
+  type: xpto-rest-api
+  clusterIPService: stratify
+  url: http://{clusterIPService.host}:8000
 
 externalServicesDeclarations:
  - name: management

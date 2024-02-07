@@ -15,7 +15,7 @@ def config_validation_op():
 
     api_url = "http://localhost:8000/config_validate"
 
-    config_str = get_config_str_from_file_op("/Users/dkogan/stratify_config.conf")
+    config_str = get_config_str_from_file_op("./config.conf")
     headers =  {"accept":"application/json"}
     response = requests.post(api_url, data=config_str, headers=headers)
 
@@ -30,7 +30,7 @@ def computations_op():
 
     api_url = "http://localhost:8000/run_job/stratify"
 
-    config_str = get_config_str_from_file_op("/Users/dkogan/stratify_config.conf")
+    config_str = get_config_str_from_file_op("./config.conf")
     headers =  {"accept":"application/json"}
     response = requests.post(api_url, data=config_str, headers=headers)
 
