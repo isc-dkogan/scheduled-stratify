@@ -1,1 +1,1 @@
-# scheduled-stratify
+# stratify-scheduler
