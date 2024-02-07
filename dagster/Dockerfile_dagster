@@ -1,6 +1,7 @@
 FROM python:3.10-slim
 
-RUN pip install -r requirements.txt
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
 ENV DAGSTER_HOME=/opt/dagster/dagster_home/
 
